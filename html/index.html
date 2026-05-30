@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Society Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Colorful Enhancements for the Home Page */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo-img {
+            height: 90px;
+            width: auto;
+            margin-right: 15px;
+            background-color: white; 
+            border-radius: 50%;
+            padding: 2px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 50%, #fff3e0 100%);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-title {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Colorful Buttons matching the logo's hands */
+        .action-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-blue { background-color: #1976d2; color: white; }
+        .btn-blue:hover { background-color: #1565c0; }
+        
+        .btn-green { background-color: #2e7d32; color: white; }
+        .btn-green:hover { background-color: #1b5e20; }
+        
+        .btn-orange { background-color: #ef6c00; color: white; }
+        .btn-orange:hover { background-color: #e65100; }
+
+        .announcement-card {
+            border-left: 6px solid #ef6c00;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .announcement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .announcement-title {
+            color: #ef6c00;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-dashboard-bar">
+        <div class="top-dashboard-brand">Society Web System</div>
+        <nav class="top-dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="survey.html">Surveys</a></li>
+                <li><a href="polls.html">Polls</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+        <div class="header-brand">
+
+            <img src="https://static.vecteezy.com/system/resources/previews/000/660/325/original/colorful-social-hand-charity-logo-vector.jpg" alt="Society Logo" class="logo-img">
+            Society Web System
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to the Society Survey & Election Portal</h1>
+            <p class="hero-text">
+                <strong>Purpose:</strong> This system empowers society members to participate in community surveys and cast their votes in polls to elect dedicated residential representatives[cite: 1]. Let's build a better community together!
+            </p>
+            
+            <div class="action-buttons">
+                <!-- Call-to-action buttons[cite: 1] -->
+                <a href="register.html" class="btn btn-blue">Register</a>
+                <a href="login.html" class="btn btn-green">Login</a>
+                <a href="polls.html" class="btn btn-orange">View Polls</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="announcement-card">
+                <h2 class="announcement-title">Society Representative Election Announcement</h2>
+                <p>The upcoming annual annual society elections are now scheduled We encourage all residents to register or log in to review the candidate manifestos, participate in preliminary society surveys, and cast your vote. Your voice matters in shaping the future of our society.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

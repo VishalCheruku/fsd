@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote - Society Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-dashboard-bar">
+        <div class="top-dashboard-brand">Society Web System</div>
+        <nav class="top-dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="survey.html">Surveys</a></li>
+                <li><a href="polls.html">Polls</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+
+        <div class="logo">Society Web System</div>
+        <nav>
+            <ul>
+                <li><a href="polls.html">Back to Polls</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>President Election</h2>
+        <form action="results.html" style="max-width: 800px; display: block;">
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Candidate 1: Amit Sharma</h3>
+                    <p><strong>Flat:</strong> A-402</p>
+                    <p><strong>Position:</strong> President</p>
+                    <p><strong>Manifesto:</strong> Enhancing security and greener surroundings.</p>
+                    <label style="margin-top: 1rem; display: block;">
+                        <input type="radio" name="vote" value="amit" required> Select this candidate
+                    </label>
+                </div>
+                <div class="card">
+                    <h3>Candidate 2: Priya Patel</h3>
+                    <p><strong>Flat:</strong> C-105</p>
+                    <p><strong>Position:</strong> President</p>
+                    <p><strong>Manifesto:</strong> Focus on transparent accounting and maintenance.</p>
+                    <label style="margin-top: 1rem; display: block;">
+                        <input type="radio" name="vote" value="priya"> Select this candidate
+                    </label>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <button type="submit">Submit Vote</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

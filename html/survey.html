@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Surveys - Society Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-dashboard-bar">
+        <div class="top-dashboard-brand">Society Web System</div>
+        <nav class="top-dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="survey.html">Surveys</a></li>
+                <li><a href="polls.html">Polls</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+
+        <div class="logo">Society Web System</div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Society Amenities Survey</h2>
+        <form action="#" style="max-width: 800px;">
+            <div class="form-group">
+                <label>Cleanliness satisfaction:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="clean" value="Good"> Good</label>
+                    <label><input type="radio" name="clean" value="Average"> Average</label>
+                    <label><input type="radio" name="clean" value="Poor"> Poor</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="security">Security service feedback:</label>
+                <select id="security" name="security">
+                    <option value="excellent">Excellent</option>
+                    <option value="satisfactory">Satisfactory</option>
+                    <option value="needs_improvement">Needs Improvement</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Parking issues experienced (Check all that apply):</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="parking" value="space"> Not enough space</label>
+                    <label><input type="checkbox" name="parking" value="unauthorized"> Unauthorized parking</label>
+                    <label><input type="checkbox" name="parking" value="lighting"> Poor lighting</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Water supply feedback:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="water" value="consistent"> Consistent</label>
+                    <label><input type="radio" name="water" value="inconsistent"> Inconsistent</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Maintenance quality:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="maintenance" value="high"> High Quality</label>
+                    <label><input type="radio" name="maintenance" value="low"> Low Quality</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="suggestions">Suggestions box:</label>
+                <textarea id="suggestions" name="suggestions" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Submit Survey</button>
+        </form>
+    </main>
+</body>
+</html>

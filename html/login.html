@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Society Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-dashboard-bar">
+        <div class="top-dashboard-brand">Society Web System</div>
+        <nav class="top-dashboard-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="survey.html">Surveys</a></li>
+                <li><a href="polls.html">Polls</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+
+        <div class="logo">Society Web System</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Login</h2>
+        <form action="dashboard.html" method="POST">
+            <div class="form-group">
+                <label for="userid">Email or Mobile Number</label>
+                <input type="text" id="userid" name="userid" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                <a href="#">Forgot password?</a>
+                <a href="register.html">Register here</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls - Society Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Fixes to resolve overlapping layout issues */
+        .poll-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .poll-card {
+            background: var(--card-bg, #ffffff);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            
+            /* Structural fix: Forces vertical stacking and consistent flow */
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .poll-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Fixes inline padding overflow bug visible in screenshot */
+        .poll-card .btn {
+            display: inline-block;
+            align-self: flex-start; 
+            margin-top: auto; /* Perfectly pushes button to the bottom of the card */
+        }
+
+        .status-badge {
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            width: max-content;
+            font-size: 0.9rem;
+        }
+
+        .status-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-closed {
+            background-color: #ffe0b2;
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-dashboard-bar">
+        <div class="top-dashboard-brand">Society Web System</div>
+        <nav class="top-dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="survey.html">Surveys</a></li>
+                <li><a href="polls.html">Polls</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+
+        <div class="logo">Society Web System</div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Active Polls</h2>
+        
+        <!-- List of active polls formatted using CSS Grid -->
+        <div class="poll-grid">
+            
+            <!-- President Election -->
+            <div class="poll-card">
+                <h3>President Election</h3>
+                <p>Elect the President for term 2026-2027.</p>
+                <p><strong>Start Date:</strong> Oct 15 | <strong>End Date:</strong> Oct 18</p>
+                <div class="status-badge status-active">Status: Active</div>
+                <a href="vote.html" class="btn">Vote Now</a>
+            </div>
+
+            <!-- Secretary Election -->
+            <div class="poll-card">
+                <h3>Secretary Election</h3>
+                <p>Elect the general secretary.</p>
+                <p><strong>Start Date:</strong> Oct 15 | <strong>End Date:</strong> Oct 18</p>
+                <div class="status-badge status-active">Status: Active</div>
+                <a href="vote.html" class="btn">Vote Now</a>
+            </div>
+
+            <!-- Treasurer Election -->
+            <div class="poll-card">
+                <h3>Treasurer Election</h3>
+                <p>Elect the society treasurer.</p>
+                <p><strong>Start Date:</strong> Oct 15 | <strong>End Date:</strong> Oct 18</p>
+                <div class="status-badge status-active">Status: Active</div>
+                <a href="vote.html" class="btn">Vote Now</a>
+            </div>
+
+            <!-- Cultural Committee Head Election -->
+            <div class="poll-card" style="opacity: 0.75;">
+                <h3>Cultural Committee Head Election</h3>
+                <p>Elect the point of contact for society cultural programs.</p>
+                <p><strong>Start Date:</strong> Sep 10 | <strong>End Date:</strong> Sep 12</p>
+                <div class="status-badge status-closed">Status: Closed</div>
+            </div>
+
+            <!-- Security Coordinator Election -->
+            <div class="poll-card" style="opacity: 0.75;">
+                <h3>Security Coordinator Election</h3>
+                <p>Elect the security operations supervisor.</p>
+                <p><strong>Start Date:</strong> Sep 10 | <strong>End Date:</strong> Sep 12</p>
+                <div class="status-badge status-closed">Status: Closed</div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
