@@ -1,0 +1,243 @@
+1.USERS
+
+CREATE TABLE users (
+  userid INTEGER PRIMARY KEY,
+  fullname varchar(100) NOT NULL,
+  email varchar(100) unique,
+  city varchar(100) NOT NULL,
+  regdate date NOT Null
+);
+
+
+desc users;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| userid   | int          | NO   | PRI | NULL    |       |
+| fullname | varchar(100) | NO   |     | NULL    |       |
+| email    | varchar(100) | YES  | UNI | NULL    |       |
+| city     | varchar(100) | NO   |     | NULL    |       |
+| regdate  | date         | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
+insert into users(userid,fullname,email,city,regdate) values (1,'Bhanu','bc@gmail.com','delhi','2026-05-20');
+insert into users(userid,fullname,email,city,regdate) values (2,'charan','c@gmail.com','chennai','2026-04-20');
+insert into users(userid,fullname,email,city,regdate) values (3,'vishal','v@gmail.com','noida','2026-05-24');
+insert into users(userid,fullname,email,city,regdate) values (4,'upender','up@gmail.com','delhi','2026-03-11');
+insert into users(userid,fullname,email,city,regdate) values (5,'surya','s@gmail.com','delhi','2026-05-16');
+insert into users(userid,fullname,email,city,regdate) values (6,'vikas','vi@gmail.com','mumbai','2026-04-28');
+insert into users(userid,fullname,email,city,regdate) values (7,'prem','p@gmail.com','mumbai','2026-05-07');
+insert into users(userid,fullname,email,city,regdate) values (8,'pavan','pa@gmail.com','mumbai','2026-05-23');
+insert into users(userid,fullname,email,city,regdate) values (9,'alice','al@gmail.com','mumbai','2026-02-13');
+insert into users(userid,fullname,email,city,regdate) values (10,'bob','bob@gmail.com','mumbai','2026-05-12');
+
+select * from users;
++--------+----------+---------------+---------+------------+
+| userid | fullname | email         | city    | regdate    |
++--------+----------+---------------+---------+------------+
+|      1 | Bhanu    | bc@gmail.com  | delhi   | 2026-05-20 |
+|      2 | charan   | c@gmail.com   | chennai | 2026-04-20 |
+|      3 | vishal   | v@gmail.com   | noida   | 2026-05-24 |
+|      4 | upender  | up@gmail.com  | delhi   | 2026-03-11 |
+|      5 | surya    | s@gmail.com   | delhi   | 2026-05-16 |
+|      6 | vikas    | vi@gmail.com  | mumbai  | 2026-04-28 |
+|      7 | prem     | p@gmail.com   | mumbai  | 2026-05-07 |
+|      8 | pavan    | pa@gmail.com  | mumbai  | 2026-05-23 |
+|      9 | alice    | al@gmail.com  | mumbai  | 2026-02-13 |
+|     10 | bob      | bob@gmail.com | mumbai  | 2026-05-12 |
++--------+----------+---------------+---------+------------+
+
+select * from users where regdate>=curdate()-INTERVAL 30 DAY;
++--------+----------+---------------+--------+------------+
+| userid | fullname | email         | city   | regdate    |
++--------+----------+---------------+--------+------------+
+|      1 | Bhanu    | bc@gmail.com  | delhi  | 2026-05-20 |
+|      3 | vishal   | v@gmail.com   | noida  | 2026-05-24 |
+|      5 | surya    | s@gmail.com   | delhi  | 2026-05-16 |
+|      7 | prem     | p@gmail.com   | mumbai | 2026-05-07 |
+|      8 | pavan    | pa@gmail.com  | mumbai | 2026-05-23 |
+|     10 | bob      | bob@gmail.com | mumbai | 2026-05-12 |
++--------+----------+---------------+--------+------------+
+
+select * from users order by regdate;
++--------+----------+---------------+---------+------------+
+| userid | fullname | email         | city    | regdate    |
++--------+----------+---------------+---------+------------+
+|      9 | alice    | al@gmail.com  | mumbai  | 2026-02-13 |
+|      4 | upender  | up@gmail.com  | delhi   | 2026-03-11 |
+|      2 | charan   | c@gmail.com   | chennai | 2026-04-20 |
+|      6 | vikas    | vi@gmail.com  | mumbai  | 2026-04-28 |
+|      7 | prem     | p@gmail.com   | mumbai  | 2026-05-07 |
+|     10 | bob      | bob@gmail.com | mumbai  | 2026-05-12 |
+|      5 | surya    | s@gmail.com   | delhi   | 2026-05-16 |
+|      1 | Bhanu    | bc@gmail.com  | delhi   | 2026-05-20 |
+|      8 | pavan    | pa@gmail.com  | mumbai  | 2026-05-23 |
+|      3 | vishal   | v@gmail.com   | noida   | 2026-05-24 |
++--------+----------+---------------+---------+------------+
+
+select city,count(*) as no_users from users GROUP BY city;
++---------+----------+
+| city    | no_users |
++---------+----------+
+| delhi   |        3 |
+| chennai |        1 |
+| noida   |        1 |
+| mumbai  |        5 |
++---------+----------+
+
+select city ,count(*) as total_users from users GROUP BY city having total_users>=5;
++--------+-------------+
+| city   | total_users |
++--------+-------------+
+| mumbai |           5 |
++--------+-------------+
+
+select * from users where fullname LIKE 'A%';
++--------+----------+--------------+--------+------------+
+| userid | fullname | email        | city   | regdate    |
++--------+----------+--------------+--------+------------+
+|      9 | alice    | al@gmail.com | mumbai | 2026-02-13 |
++--------+----------+--------------+--------+------------+
+
+select  city,count(*) as total_c from users GROUP BY city having total_c>1;
++--------+---------+
+| city   | total_c |
++--------+---------+
+| delhi  |       3 |
+| mumbai |       5 |
++--------+---------+
+
+
+select * from users where DAYOFWEEK(regdate) IN (1,7); 
++--------+----------+--------------+--------+------------+
+| userid | fullname | email        | city   | regdate    |
++--------+----------+--------------+--------+------------+
+|      3 | vishal   | v@gmail.com  | noida  | 2026-05-24 |
+|      5 | surya    | s@gmail.com  | delhi  | 2026-05-16 |
+|      8 | pavan    | pa@gmail.com | mumbai | 2026-05-23 |
++--------+----------+--------------+--------+------------+
+
+select * from users order by regdate limit 1;
++--------+----------+--------------+--------+------------+
+| userid | fullname | email        | city   | regdate    |
++--------+----------+--------------+--------+------------+
+|      9 | alice    | al@gmail.com | mumbai | 2026-02-13 |
++--------+----------+--------------+--------+------------+
+
+select MONTH(regdate) as month_no, count(*) as total_users from users group by month_no order by month_no;
++----------+-------------+
+| month_no | total_users |
++----------+-------------+
+|        2 |           1 |
+|        3 |           1 |
+|        4 |           2 |
+|        5 |           6 |
++----------+-------------+
+
+
+
+2.EVENTS
+
+
+CREATE TABLE users (
+  userid INTEGER PRIMARY KEY,
+  fullname varchar(100) NOT NULL,
+  email varchar(100) unique,
+  city varchar(100) NOT NULL,
+  regdate date NOT Null
+);
+
+insert into users(userid,fullname,email,city,regdate) values (1,'Bhanu','bc@gmail.com','delhi','2026-05-20');
+insert into users(userid,fullname,email,city,regdate) values (2,'charan','c@gmail.com','chennai','2026-04-20');
+insert into users(userid,fullname,email,city,regdate) values (3,'vishal','v@gmail.com','noida','2026-05-24');
+insert into users(userid,fullname,email,city,regdate) values (4,'upender','up@gmail.com','delhi','2026-03-11');
+insert into users(userid,fullname,email,city,regdate) values (5,'surya','s@gmail.com','delhi','2026-05-16');
+insert into users(userid,fullname,email,city,regdate) values (6,'vikas','vi@gmail.com','mumbai','2026-04-28');
+insert into users(userid,fullname,email,city,regdate) values (7,'prem','p@gmail.com','mumbai','2026-05-07');
+insert into users(userid,fullname,email,city,regdate) values (8,'pavan','pa@gmail.com','Hyderabad','2026-05-23');
+insert into users(userid,fullname,email,city,regdate) values (9,'alice','al@gmail.com','mumbai','2026-02-13');
+insert into users(userid,fullname,email,city,regdate) values (10,'bob','bob@gmail.com','mumbai','2026-05-12');
+
+
+CREATE TABLE events (
+    event_id INT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    city VARCHAR(200) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status ENUM('upcoming', 'completed', 'cancelled') NOT NULL DEFAULT 'upcoming',
+    organizer_id INT,
+    
+    FOREIGN KEY (organizer_id) REFERENCES users(userid)
+);
+
+INSERT INTO events
+(event_id, title, description, city, start_date, end_date, status, organizer_id)
+VALUES
+(101, 'Tech Conference 2026', 'Annual technology conference', 'Hyderabad', '2026-06-15', '2026-06-17', 'upcoming', 1),
+(102, 'Music Festival', 'Live music performances by various artists', 'Bengaluru', '2026-07-10', '2026-07-12', 'upcoming', 2),
+(103, 'Startup Meetup', 'Networking event for entrepreneurs', 'Chennai', '2026-05-20', '2026-05-20', 'completed', 2),
+(104, 'Art Exhibition', 'Display of modern art collections', 'Mumbai', '2026-08-05', '2026-08-10', 'upcoming', 3),
+(105, 'Food Carnival', 'Taste cuisines from around the world', 'Delhi', '2026-04-01', '2026-04-03', 'completed', 8),
+(106, 'Sports Championship', 'Inter-city sports competition', 'Kolkata', '2026-09-15', '2026-09-20', 'upcoming', 5),
+(107, 'Book Fair', 'Exhibition and sale of books', 'Hyderabad', '2026-03-12', '2026-03-15', 'completed', 8),
+(108, 'Science Expo', 'Innovative science projects showcase', 'Visakhapatnam', '2026-10-01', '2026-10-03', 'upcoming', 6),
+(109, 'Career Guidance Seminar', 'Career counseling and workshops', 'Vijayawada', '2026-02-20', '2026-02-20', 'cancelled', 1),
+(110, 'Digital Marketing Workshop', 'Learn modern digital marketing strategies', 'Hyderabad', '2026-11-05', '2026-11-06', 'upcoming', 4);
+
+SELECT e.title, u.fullname AS org_name
+FROM events e
+JOIN users u
+ON e.organizer_id = u.userid;
+
+select * from events where status='upcoming';
+
+select city,count(*) as no_events from events group by city;
+
+select * from events where end_date-start_date>=2;
+
+SELECT e.title,u.fullname, u.city, e.status
+FROM users u
+JOIN events e
+ON u.userid = e.organizer_id
+WHERE e.status = 'completed'
+  AND u.city = 'Hyderabad';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
