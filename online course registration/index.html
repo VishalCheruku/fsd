@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xcelerate | Next-Gen Tech Training Institute</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for Next-Level Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        /* --- Deep Tech / Futuristic Dark Mode Theme Variables --- */
+        :root {
+            --bg-dark: #0a0b10;
+            --bg-card: rgba(20, 22, 37, 0.85); /* Increased background opacity for higher contrast */
+            --border-glow: rgba(0, 242, 254, 0.3); /* Crisper, brighter borders */
+            --text-primary: #ffffff; /* pure crystal white */
+            --text-muted: #e2e8f0; /* Ultra-bright silver instead of dark gray */
+            --accent-neon: #00f2fe;
+            --accent-purple: #4facfe;
+            --gradient-primary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(240, 47, 194, 0.05) 0%, transparent 40%);
+        }
+
+        /* --- Global Class Text Fixes --- */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+        
+        .small, small {
+            color: #f8fafc !important; /* Forces ultra-vibrant off-white for micro texts */
+            font-weight: 500;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-neon); }
+
+        /* --- Custom Glassmorphic Cards & Highlighting --- */
+        .custom-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        .custom-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.25);
+        }
+        
+        .highlight-text {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* --- Navbar Upgrades --- */
+        .navbar {
+            background: rgba(10, 11, 16, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+        }
+        .nav-link {
+            color: #e2e8f0 !important; /* Brighter default text link color */
+            font-weight: 600;
+            margin: 0 5px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-neon) !important;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient-primary);
+            transition: var(--transition-smooth);
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* --- Premium Buttons --- */
+        .btn-neon {
+            background: var(--gradient-primary);
+            color: #000000 !important; /* Kept text deep black on neon backgrounds for peak accessibility read-states */
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        }
+        .btn-neon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.6);
+        }
+        .btn-outline-neon {
+            background: transparent;
+            color: var(--accent-neon) !important;
+            border: 1px solid var(--accent-neon);
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+        .btn-outline-neon:hover {
+            background: var(--gradient-primary);
+            color: #000000 !important;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        }
+
+        /* --- Hero Grid Animation Graphic --- */
+        .hero-graphic-box {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(45deg, rgba(79,172,254,0.15), rgba(0,242,254,0.15));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 10s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
+            100% { border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%; }
+        }
+
+        /* --- Image Card Handlers --- */
+        .card-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #1e293b;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.85;
+        }
+        .custom-card:hover .card-img-wrapper img {
+            transform: scale(1.1) rotate(1deg);
+            opacity: 1;
+        }
+
+        /* --- Form Control Upgrades (White text fields & bright placeholders) --- */
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.07) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            color: #ffffff !important;
+            border-radius: 8px;
+            padding: 12px;
+            transition: var(--transition-smooth);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-neon) !important;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.4) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+        }
+        .form-control::placeholder {
+            color: #cbd5e1 !important; /* Brighter placeholders */
+            opacity: 1;
+        }
+        .form-label {
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px;
+        }
+        .form-check-input {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .form-check-input:checked {
+            background-color: var(--accent-neon);
+            border-color: var(--accent-neon);
+        }
+
+        /* --- Alert Tweaks for High Contrast Dark-Text Overwrite --- */
+        .alert-success {
+            background: #022c22 !important;
+            border: 1px solid var(--accent-neon) !important;
+            color: #ffffff !important;
+        }
+        .alert-success .alert-heading, .alert-success p {
+            color: #ffffff !important;
+        }
+
+        /* --- Single Page App View Engine --- */
+        .app-page {
+            display: none;
+        }
+        .app-page.active-page {
+            display: block;
+        }
+
+        /* --- Footer Stylings --- */
+        footer {
+            background: #050608;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        footer p, footer li {
+            color: #f1f5f9 !important;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            margin-right: 10px;
+            transition: var(--transition-smooth);
+        }
+        .social-icon:hover {
+            background: var(--gradient-primary);
+            color: #000000;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="switchPage('home')">
+                <i class="fa-solid fa-cubes text-info me-2 fs-3 animate__animated animate__pulse animate__infinite"></i>
+                <span>XCELERATE<span class="text-info">.</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item"><a class="nav-link active" id="nav-home" href="#" onclick="switchPage('home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-courses" href="#" onclick="switchPage('courses')">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-about" href="#" onclick="switchPage('about')">About</a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-contact" href="#" onclick="switchPage('contact')">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-neon py-1 px-3 mt-2 mt-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fa-solid fa-user-astronaut me-2"></i>Login
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= MAIN CONTAINER FOR PAGES ================= -->
+    <main class="py-5">
+        
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <div id="page-home" class="app-page active-page animate__animated animate__fadeIn">
+            <!-- Hero Section -->
+            <section class="container mb-5 py-4">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInLeft text-white">
+                            Master Tomorrow's <span class="highlight-text">Tech Skills</span> Today
+                        </h1>
+                        <p class="lead text-muted mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
+                            Xcelerate is an elite training institute crafting next-generation software architects, AI engineers, and full-stack maestros with immersive production-grade learning.
+                        </p>
+                        <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                            <button class="btn btn-neon me-3 mb-2" onclick="switchPage('courses')">Explore Courses <i class="fa-solid fa-arrow-trend-up ms-2"></i></button>
+                            <button class="btn btn-outline-neon mb-2" onclick="switchPage('contact')">Get Free Consultation</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-none d-lg-block text-center animate__animated animate__zoomIn">
+                        <div class="hero-graphic-box">
+                            <i class="fa-solid fa-laptop-code fa-5x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Courses Section -->
+            <section class="container my-5 pt-5">
+                <div class="d-flex justify-content-between align-items-end mb-4">
+                    <div>
+                        <h6 class="text-info text-uppercase tracking-wider fw-semibold mb-1">Curated Tracks</h6>
+                        <h2 class="fw-bold m-0 text-white">Featured Programs</h2>
+                    </div>
+                    <button class="btn btn-outline-neon btn-sm" onclick="switchPage('courses')">See All <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                </div>
+                <div class="row g-4" id="featured-courses-grid">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+            </section>
+
+            <!-- Testimonials Section (Carousel Component) -->
+            <section class="container my-5 py-5">
+                <div class="text-center mb-5">
+                    <h6 class="text-info text-uppercase fw-semibold">Success Stories</h6>
+                    <h2 class="fw-bold text-white">What Our Alumni Say</h2>
+                </div>
+                <div id="testimonialCarousel" class="carousel slide custom-card p-5 mx-auto" style="max-width: 800px;" data-bs-ride="carousel">
+                    <div class="carousel-inner text-center">
+                        <div class="carousel-item active">
+                            <i class="fa-solid fa-quote-left fa-3x text-info mb-4 opacity-50"></i>
+                            <p class="fs-4 italic px-md-5 text-white">"The curriculum at Xcelerate is lightyears ahead of normal bootcamps. I went from a novice to securing a Cloud Engineer post in months."</p>
+                            <h5 class="fw-bold mt-4 text-white">Sophia Vance</h5>
+                            <small class="text-info font-weight-bold">Cloud Architect at AWS</small>
+                        </div>
+                        <div class="carousel-item">
+                            <i class="fa-solid fa-quote-left fa-3x text-info mb-4 opacity-50"></i>
+                            <p class="fs-4 italic px-md-5 text-white">"The Machine Learning modules were incredibly practical. Building production pipelines hands-on gave me an unfair competitive edge."</p>
+                            <h5 class="fw-bold mt-4 text-white">Marcus Chen</h5>
+                            <small class="text-info font-weight-bold">AI Research Analyst at OpenAI</small>
+                        </div>
+                        <div class="carousel-item">
+                            <i class="fa-solid fa-quote-left fa-3x text-info mb-4 opacity-50"></i>
+                            <p class="fs-4 italic px-md-5 text-white">"Dynamic trainers, state-of-the-art architectures, and true continuous integration assignments. Simply the absolute gold standard."</p>
+                            <h5 class="fw-bold mt-4 text-white">Amara Okafor</h5>
+                            <small class="text-info font-weight-bold">Lead Full Stack Developer</small>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 2: COURSES PAGE ================= -->
+        <div id="page-courses" class="app-page animate__animated animate__fadeIn">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h6 class="text-info text-uppercase fw-semibold">Next-Gen Curriculum</h6>
+                    <h1 class="fw-bold text-white">Explore Our Professional <span class="highlight-text">Training Tracks</span></h1>
+                    <p class="text-muted max-w-600 mx-auto">Acquire enterprise level execution frameworks via high-intensity blueprints mapped to structural industry requirements.</p>
+                </div>
+                <div class="row g-4" id="all-courses-grid">
+                    <!-- Dynamic rendering via JS mapping object array -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= PAGE 3: REGISTRATION PAGE ================= -->
+        <div id="page-register" class="app-page animate__animated animate__fadeIn">
+            <div class="container mx-auto" style="max-width: 800px;">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="custom-card p-5">
+                            <div class="text-center mb-4">
+                                <i class="fa-solid fa-user-plus fa-3x text-info mb-3"></i>
+                                <h2 class="fw-bold text-white">Course Registration Portal</h2>
+                                <p class="text-muted">Lock in your seat and advance your trajectory.</p>
+                            </div>
+
+                            <!-- Success Alert Component -->
+                            <div class="alert alert-success d-none animate__animated animate__slideInDown" id="registrationAlert" role="alert">
+                                <div class="d-flex">
+                                    <i class="fa-solid fa-circle-check fs-4 me-3 text-white"></i>
+                                    <div>
+                                        <h5 class="alert-heading fw-bold">Admission Request Logged Successfully!</h5>
+                                        <p class="m-0">Our registrar team will evaluate your criteria and send calendar slots within 24 business hours.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form id="registrationForm" onsubmit="handleRegistration(event)">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label small">Student Full Name</label>
+                                        <input type="text" class="form-control" required placeholder="John Doe">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small">Email Address</label>
+                                        <input type="email" class="form-control" required placeholder="john@example.com">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small">Mobile Number</label>
+                                        <input type="tel" class="form-control" required placeholder="+1 (555) 000-0000">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small">Gender</label>
+                                        <select class="form-select" required>
+                                            <option value="" disabled selected style="background:#141625; color:#fff;">Select gender</option>
+                                            <option value="male" style="background:#141625; color:#fff;">Male</option>
+                                            <option value="female" style="background:#141625; color:#fff;">Female</option>
+                                            <option value="other" style="background:#141625; color:#fff;">Non-binary / Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small">Target Program Select</label>
+                                        <select class="form-select" id="courseDropdownSelect" required style="color:#fff;">
+                                            <!-- Dynamically generated selection elements -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label small">Highest Academic Qualification</label>
+                                        <input type="text" class="form-control" required placeholder="B.S. in Computer Science, High School Diploma, etc.">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label small">Residential Address</label>
+                                        <textarea class="form-control" rows="3" required placeholder="Street address, City, State, ZIP code"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label small">Upload Brief Resume / Academic Record (.pdf)</label>
+                                        <input type="file" class="form-control" accept=".pdf" required>
+                                    </div>
+                                    <div class="col-md-12 my-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                            <label class="form-check-label text-white small" for="termsCheck">
+                                                I authenticate the supplied credentials and agree to the institutional code-of-conduct and privacy structures.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn btn-neon w-100 py-3">Submit Enrollment Application</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= PAGE 4: ABOUT US PAGE ================= -->
+        <div id="page-about" class="app-page animate__animated animate__fadeIn">
+            <div class="container">
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-md-6">
+                        <h6 class="text-info text-uppercase fw-semibold">Our Profile</h6>
+                        <h2 class="fw-bold display-5 mb-3 text-white">Architecting Careers <span class="highlight-text">Since 2018</span></h2>
+                        <p class="text-white leading-relaxed mb-4">Xcelerate was created by a collective of engineering leads frustrated by traditional academic deficits. We bridge execution gaps by placing candidates directly into scaled simulations mimicking premium technology work environments.</p>
+                        <div class="row g-3 mt-2">
+                            <div class="col-6">
+                                <div class="border-start border-info border-3 collapse-glow ps-3">
+                                    <h4 class="fw-bold m-0 text-white">Vision</h4>
+                                    <p class="text-muted small m-0">To globalize democratization of production engineering architectures.</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="border-start border-info border-3 collapse-glow ps-3">
+                                    <h4 class="fw-bold m-0 text-white">Mission</h4>
+                                    <p class="text-muted small m-0">Equipping builders to generate world-class business values seamlessly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="custom-card p-4 text-center">
+                            <i class="fa-solid fa-graduation-cap fa-5x text-info mb-3"></i>
+                            <h3 class="fw-bold text-white">12,500+ Alumni</h3>
+                            <p class="text-white mb-0">Thriving cross-functionally across Tier-1 tech environments globally.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4">
+                    <h3 class="fw-bold text-center mb-5 text-white">Elite Engineering <span class="highlight-text">Faculty Core</span></h3>
+                    <div class="row g-4" id="faculty-grid">
+                        <!-- Loaded dynamic faculty info -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= PAGE 5: CONTACT US PAGE ================= -->
+        <div id="page-contact" class="app-page animate__animated animate__fadeIn">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h6 class="text-info text-uppercase fw-semibold">Global Gateway</h6>
+                    <h1 class="fw-bold text-white">Connect With Our Team</h1>
+                </div>
+                
+                <div class="row g-5">
+                    <!-- Form Submitter Card -->
+                    <div class="col-lg-6">
+                        <div class="custom-card p-4 h-100">
+                            <h4 class="fw-bold mb-4 text-white"><i class="fa-solid fa-paper-plane text-info me-2"></i>Drop an Inquiry</h4>
+                            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                                <div class="mb-3">
+                                    <label class="form-label small">Your Name</label>
+                                    <input type="text" class="form-control" required placeholder="Alex Mercer">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small">Email Address</label>
+                                    <input type="email" class="form-control" required placeholder="alex@mercer.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small">Message Subject</label>
+                                    <input type="text" class="form-control" required placeholder="Corporate Training info...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small">Message Details</label>
+                                    <textarea class="form-control" rows="4" required placeholder="State your requirements..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-neon w-100 py-2">Dispatch Message</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Details & Maps Embed -->
+                    <div class="col-lg-6">
+                        <div class="d-flex flex-column h-100 justify-content-between">
+                            <div class="custom-card p-4 mb-4">
+                                <h4 class="fw-bold mb-4 text-white"><i class="fa-solid fa-building-user text-info me-2"></i>Headquarters Space</h4>
+                                <div class="d-flex align-items-start mb-3">
+                                    <i class="fa-solid fa-location-dot text-info mt-1 me-3 fs-5"></i>
+                                    <p class="m-0 text-white">Suite 404, Innovation Labs, Quantum Valley Tower, Tech Hub, NY 10011</p>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fa-solid fa-phone text-info me-3 fs-5"></i>
+                                    <p class="m-0 text-white">+1 (800) 555-XCEL</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope text-info me-3 fs-5"></i>
+                                    <p class="m-0 text-white">admissions@xcelerate-labs.edu</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Premium Custom Styled Placeholder Container Component -->
+                            <div class="custom-card flex-grow-1 overflow-hidden position-relative" style="min-height: 250px;">
+                                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-center p-4">
+                                    <div>
+                                        <i class="fa-solid fa-map-location-dot fa-3x text-info mb-2 animate__animated animate__pulse animate__infinite"></i>
+                                        <h5 class="fw-bold text-white m-0">Interactive Map Interface</h5>
+                                        <p class="text-white small my-2">Silicon Alley Technology Campus Map Node</p>
+                                        <span class="badge bg-secondary p-2 text-white">Latitude 40.741892 | Longitude -73.989308</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================================= FOOTER ================================= -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+                <div class="col-md-4">
+                    <h4 class="fw-bold text-white mb-3">XCELERATE<span class="text-info">.</span></h4>
+                    <p class="text-white small">Setting structural paradigm standards across international engineering architectures. Experience continuous integration paradigms directly mapped into execution pipelines.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-white mb-3">Contact Metrics</h5>
+                    <ul class="list-unstyled text-white small">
+                        <li class="mb-2"><i class="fa-solid fa-map-location-dot text-info me-2"></i> Suite 404, Quantum Valley Tower, NY 10011</li>
+                        <li class="mb-2"><i class="fa-solid fa-headset text-info me-2"></i> +1 (800) 555-XCEL</li>
+                        <li class="mb-2"><i class="fa-solid fa-envelope text-info me-2"></i> admissions@xcelerate-labs.edu</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="fw-bold text-white mb-3">Digital Node Grid</h5>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4 opacity-25">
+            <div class="text-center text-white small">
+                &copy; 2026 Xcelerate Institutes Global Inc. All rights reserved globally.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= BOOTSTRAP MODAL DIALOG COMPONENT ================= -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-card p-4 shadow-lg" style="background-color: #0d0f17; border: 1px solid var(--accent-neon);">
+                <div class="modal-header border-0 pb-0">
+                    <h4 class="modal-title fw-bold text-white"><i class="fa-solid fa-shield-halved text-info me-2"></i>Secure Access</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-4">
+                    <form onsubmit="event.preventDefault(); alert('OAuth system online. Secure entry initialized.');">
+                        <div class="mb-3">
+                            <label class="form-label small">Identity Hash / Email</label>
+                            <input type="email" class="form-control" required placeholder="admin@xcelerate.edu">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label small">Passphrase</label>
+                            <input type="password" class="form-control" required placeholder="••••••••••••">
+                        </div>
+                        <button type="submit" class="btn btn-neon w-100 py-2">Establish Connection</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= DETAILS INQUIRY MODAL COMPONENT ================= -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-card p-4" style="background-color: #0d0f17;">
+                <div class="modal-header border-0 pb-0">
+                    <h4 class="modal-title fw-bold text-white" id="detailsModalTitle">Course Architecture Blueprint</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-3">
+                    <p class="text-white" id="detailsModalDesc"></p>
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-25 mb-3">
+                        <div class="d-flex justify-content-between small mb-2"><span class="text-white opacity-75">Structure Duration:</span><strong class="text-white" id="detailsModalDuration"></strong></div>
+                        <div class="d-flex justify-content-between small"><span class="text-white opacity-75">Tuition Matrix Value:</span><strong class="text-info" id="detailsModalFee"></strong></div>
+                    </div>
+                    <button class="btn btn-neon w-100" data-bs-dismiss="modal" onclick="switchPage('register')">Transition to Registration</button>
+                </div>
+            </div>
+        </div>
+    </div>
+2
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const coursesData = [
+            { id: "webdev", name: "Web Development Matrix", duration: "16 Weeks", fee: "$1,200", icon: "fa-brands fa-js-square", desc: "Build industry-scalable production platforms utilizing Next.js, advanced Node cluster strategies, and state-retaining cloud databases.", img: "https://matrix.org/blog/img/new-morg.png" },
+            { id: "python", name: "Python Programming & Automation", duration: "12 Weeks", fee: "$950", icon: "fa-brands fa-python", desc: "Master robust system architectures, deep multithreaded processing modules, and complex custom data scrapers.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" },
+            { id: "datasci", name: "Data Science & Analytical Modelling", duration: "24 Weeks", fee: "$2,100", icon: "fa-solid fa-chart-pie", desc: "Formulate strategic mathematical algorithms, statistical pipeline metrics, cleaning operations, and advanced Tableau renderings.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" },
+            { id: "aiml", name: "AI & Neural Machine Learning", duration: "28 Weeks", fee: "$2,800", icon: "fa-solid fa-brain", desc: "Deep dive into Transformers, fine-tuning large language structures, training neural nodes, and optimizing weights via PyTorch.", img: "https://computing.mit.edu/wp-content/uploads/2020/11/MIT-Network-Confidence-01-Press-681x454-c-default.jpg" },
+            { id: "java", name: "Java Enterprise Deep Architectures", duration: "20 Weeks", fee: "$1,600", icon: "fa-brands fa-java", desc: "Architect elite microservices with Spring Boot, Dockerize standalone code containers, and configure high-throughput Kubernetes systems.", img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" },
+            { id: "cloud", name: "Cloud Infrastructure Eng. (AWS/GCP)", duration: "14 Weeks", fee: "$1,450", icon: "fa-solid fa-cloud-arrow-up", desc: "Provision stateful Terraform configurations, orchestrate multi-zone failovers, and optimize load-balancing matrix metrics safely.", img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        const facultyData = [
+            { name: "Dr. Evelyn Vance", role: "Principal Architect, AI Grid", company: "Ex-Google DeepMind", icon: "fa-solid fa-user-shield" },
+            { name: "Siddharth Mehta", role: "Director, Enterprise Systems", company: "Ex-Netflix Systems Lead", icon: "fa-solid fa-user-gear" },
+            { name: "Klara Ostlund", role: "Head of Cloud Architectures", company: "AWS Certified Principal Coach", icon: "fa-solid fa-user-astronaut" }
+        ];
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.app-page').forEach(page => page.classList.remove('active-page'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            const activeTarget = document.getElementById(`page-${pageId}`);
+            if(activeTarget) {
+                activeTarget.classList.add('active-page');
+                window.scrollTo(0,0);
+            }
+            
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if(activeNav) activeNav.classList.add('active');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const featuredGrid = document.getElementById('featured-courses-grid');
+            const allCoursesGrid = document.getElementById('all-courses-grid');
+            const dropdownSelect = document.getElementById('courseDropdownSelect');
+            const facultyGrid = document.getElementById('faculty-grid');
+
+            dropdownSelect.innerHTML = `<option value="" disabled selected style="background:#141625; color:#fff;">Choose your engineering track...</option>`;
+
+            coursesData.forEach(course => {
+                const cardHtml = `
+                    <div class="col-xl-4 col-md-6 animate__animated animate__fadeInUp">
+                        <div class="card h-100 custom-card text-white">
+                            <div class="card-img-wrapper">
+                                <img src="${course.img}" alt="${course.name}">
+                                <div class="position-absolute top-0 end-0 m-3 badge bg-dark border border-info px-2 py-1 text-white">
+                                    <i class="${course.icon} text-info me-1"></i> Tech Track
+                                </div>
+                            </div>
+                            <div class="card-body d-flex flex-column justify-content-between p-4">
+                                <div>
+                                    <h4 class="card-title fw-bold text-white mb-2">${course.name}</h4>
+                                    <div class="d-flex justify-content-between small my-3 bg-black bg-opacity-40 p-2 rounded">
+                                        <span class="text-white"><i class="fa-regular fa-clock text-info me-1"></i> ${course.duration}</span>
+                                        <span class="fw-bold text-info"><i class="fa-solid fa-wallet me-1"></i> ${course.fee}</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-neon w-100 btn-sm mt-2" onclick="openDetailsModal('${course.id}')">View Blueprints</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                featuredGrid.insertAdjacentHTML('beforeend', cardHtml);
+                allCoursesGrid.insertAdjacentHTML('beforeend', cardHtml);
+                dropdownSelect.insertAdjacentHTML('beforeend', `<option value="${course.id}" style="background:#141625; color:#fff;">${course.name} (${course.fee})</option>`);
+            });
+
+            facultyData.forEach(fac => {
+                const facHtml = `
+                    <div class="col-md-4">
+                        <div class="custom-card p-4 text-center">
+                            <div class="mx-auto mb-3 bg-info bg-opacity-10 d-flex align-items-center justify-content-center" style="width:70px; height:70px; border-radius:50%; border:1px solid var(--accent-neon)">
+                                <i class="${fac.icon} fa-2x text-info"></i>
+                            </div>
+                            <h4 class="fw-bold text-white mb-1">${fac.name}</h4>
+                            <div class="badge bg-dark border border-secondary mb-2 small text-white">${fac.role}</div>
+                            <p class="text-white small m-0">${fac.company}</p>
+                        </div>
+                    </div>
+                `;
+                facultyGrid.insertAdjacentHTML('beforeend', facHtml);
+            });
+        });
+
+        function openDetailsModal(id) {
+            const courseObj = coursesData.find(c => c.id === id);
+            if(courseObj) {
+                document.getElementById('detailsModalTitle').innerText = courseObj.name;
+                document.getElementById('detailsModalDesc').innerText = courseObj.desc;
+                document.getElementById('detailsModalDuration').innerText = courseObj.duration;
+                document.getElementById('detailsModalFee').innerText = courseObj.fee;
+                
+                const detailsModalEl = new bootstrap.Modal(document.getElementById('detailsModal'));
+                detailsModalEl.show();
+            }
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('registrationAlert');
+            alertBox.classList.remove('d-none');
+            document.getElementById('registrationForm').reset();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            
+            setTimeout(() => {
+                alertBox.classList.add('d-none');
+            }, 8000);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert("Secure dispatch initialized. Institutional transmission route processing completed successfully!");
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
